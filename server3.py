@@ -2082,4 +2082,5 @@ if __name__ == "__main__":
     print("🚀 IPFS Folder Navigation and Preview Features Active!")
     print("✅ ALL CRITICAL BUGS FIXED - Complete working backend!")
     print("🔧 GROUP CID MAPPING BUG FIXED - File sizes should now display correctly!")
-    app.run(host="0.0.0.0", port=8000, debug=False, threaded=True)
+    port = int(os.environ.get('PORT', 8000))
+    app.run(host="0.0.0.0", port=port, debug=False, threaded=True)
