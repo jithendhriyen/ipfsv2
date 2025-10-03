@@ -14,10 +14,10 @@ services:
 
   - type: web
     name: ipfspp-frontend
-    env: static
+    env: node
     plan: free
     buildCommand: npm install && npm run build
-    staticPublishPath: ./out
+    startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production
