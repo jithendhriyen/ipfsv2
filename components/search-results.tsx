@@ -61,7 +61,7 @@ const formatNumber = (num) => {
   return num.toString()
 }
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "https://silver-dec-v4-ubdd.onrender.com"
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "https://ipfsv2.onrender.com"
 
 const SearchResults = ({ darkMode }) => {
   const { user, loading: userLoading } = useUser()

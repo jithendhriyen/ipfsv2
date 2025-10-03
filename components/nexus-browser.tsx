@@ -37,7 +37,7 @@ import {
   FolderIcon as FolderSolidIcon,
 } from "@heroicons/react/24/solid"
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "https://silver-dec-v4-ubdd.onrender.com"
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "https://ipfsv2.onrender.com"
 
 // Error Boundary Component
 class ErrorBoundary extends React.Component {

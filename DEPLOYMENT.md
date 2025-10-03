@@ -63,7 +63,7 @@ Make sure your repository contains all the necessary files:
    ```
    NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
    NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-   NEXT_PUBLIC_API_URL=https://your-backend-url.onrender.com
+   NEXT_PUBLIC_API_BASE=https://ipfsv2.onrender.com
    ```
 
 5. Click "Create Static Site"
@@ -96,7 +96,7 @@ CORS(app, origins=["https://your-frontend-url.onrender.com"])
 ### Frontend Environment Variables:
 - `NEXT_PUBLIC_SUPABASE_URL=your_supabase_url`
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key`
-- `NEXT_PUBLIC_API_URL=https://your-backend-url.onrender.com`
+- `NEXT_PUBLIC_API_BASE=https://ipfsv2.onrender.com`
 
 ## Troubleshooting
 
