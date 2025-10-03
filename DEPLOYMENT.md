@@ -50,12 +50,13 @@ Make sure your repository contains all the necessary files:
 
 ### 4. Deploy Frontend (Next.js)
 
-1. In Render, click "New +" and select "Static Site"
+1. In Render, click "New +" and select "Web Service"
 2. Connect your GitHub repository
 3. Configure the service:
    - **Name**: `ipfspp-frontend`
+   - **Environment**: `Node`
    - **Build Command**: `npm install && npm run build`
-   - **Publish Directory**: `out`
+   - **Start Command**: `npm start`
    - **Plan**: Free (or choose a paid plan)
 
 4. Add Environment Variables:
