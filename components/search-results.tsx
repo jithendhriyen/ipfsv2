@@ -1533,14 +1533,16 @@ const SearchResults = ({ darkMode }) => {
   }
 
   useEffect(() => {
-    fetchHistory()
-    fetchBookmarks()
-    fetchUploads()
-    fetchGroups()
+    if (user?.id) {
+      fetchHistory()
+      fetchBookmarks()
+      fetchUploads()
+      fetchGroups()
+    }
 
     const realtimeInterval = setInterval(fetchRealtimeAnalytics, 30000)
     return () => clearInterval(realtimeInterval)
-  }, [])
+  }, [user?.id])
 
   useEffect(() => {
     if (!query) return

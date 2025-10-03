@@ -126,16 +126,18 @@ const NexusBrowser = ({ darkMode }) => {
   const router = useRouter()
 
   useEffect(() => {
-    fetchHistory()
+    if (user?.id) {
+      fetchHistory()
+      fetchBookmarks()
+      fetchGroups()
+    }
     fetchTrending()
-    fetchBookmarks()
     // fetchUploads() // removed
-    fetchGroups()
     // fetchAnalyticsDashboard() // removed
 
     // const realtimeInterval = setInterval(fetchRealtimeAnalytics, 30000) // removed
     // return () => clearInterval(realtimeInterval)
-  }, [])
+  }, [user?.id])
 
   // FIXED: Improved section handling
   const handleSectionClick = (section) => {
@@ -349,6 +351,7 @@ const NexusBrowser = ({ darkMode }) => {
 
   // Group management functions
   const createGroup = async () => {
+    if (!user?.id) return
     if (!newGroupName.trim()) {
       alert("Please enter a group name")
       return
@@ -358,7 +361,7 @@ const NexusBrowser = ({ darkMode }) => {
       const res = await fetch(`${API_BASE}/groups`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: newGroupName.trim() }),
+        body: JSON.stringify({ name: newGroupName.trim(), user_id: user.id }),
       })
 
       const data = await res.json()
