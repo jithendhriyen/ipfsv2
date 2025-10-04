@@ -9,7 +9,7 @@ export function ProfileNavigation() {
     <header className="border-b bg-background">
       <nav className="mx-auto flex max-w-5xl items-center justify-between p-4">
         <Link href="/protected" className="text-lg font-semibold text-pretty">
-          App
+          IPFS Browser
         </Link>
         <div className="flex items-center gap-3">
           <Link className="text-sm underline underline-offset-4" href="/protected">
