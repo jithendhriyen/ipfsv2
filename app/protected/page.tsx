@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
 import NexusBrowser from "@/components/nexus-browser"
-import { Navigation } from "@/components/navigation"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 export default async function ProtectedPage() {
   const supabase = await createClient()
@@ -12,8 +12,10 @@ export default async function ProtectedPage() {
   }
 
   return (
-    <div className="flex-1 w-full flex flex-col">
-      <Navigation />
+    <div className="relative">
+      <div className="absolute top-4 right-4 z-10">
+        <ThemeToggle />
+      </div>
       <NexusBrowser />
     </div>
   )

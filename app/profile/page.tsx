@@ -1,7 +1,6 @@
 import { redirect } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
 import ProfileForm from "@/components/profile-form"
-import { ProfileNavigation } from "@/components/profile-navigation"
 
 export default async function ProfilePage() {
   const supabase = await createClient()
@@ -16,20 +15,17 @@ export default async function ProfilePage() {
   const { data: profile } = await supabase.from("profiles").select("*").eq("id", user.id).single()
 
   return (
-    <div className="flex-1 w-full flex flex-col">
-      <ProfileNavigation />
-      <main className="max-w-2xl mx-auto p-6">
-        <h1 className="text-2xl font-semibold mb-4 text-balance">Your Profile</h1>
-        <ProfileForm
-          userId={user.id}
-          initialProfile={{
-            display_name: profile?.display_name ?? "",
-            avatar_url: profile?.avatar_url ?? "",
-            bio: profile?.bio ?? "",
-            website: profile?.website ?? "",
-          }}
-        />
-      </main>
-    </div>
+    <main className="max-w-2xl mx-auto p-6">
+      <h1 className="text-2xl font-semibold mb-4 text-balance">Your Profile</h1>
+      <ProfileForm
+        userId={user.id}
+        initialProfile={{
+          display_name: profile?.display_name ?? "",
+          avatar_url: profile?.avatar_url ?? "",
+          bio: profile?.bio ?? "",
+          website: profile?.website ?? "",
+        }}
+      />
+    </main>
   )
 }
