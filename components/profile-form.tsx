@@ -26,6 +26,9 @@ export default function ProfileForm({ userId, initialProfile }: Props) {
     setSaving(true)
     setMessage(null)
     try {
+      console.log("Attempting to save profile for user:", userId)
+      console.log("Form data:", form)
+      
       const { error } = await supabase.from("profiles").upsert({
         id: userId,
         display_name: form.display_name || null,
@@ -34,9 +37,16 @@ export default function ProfileForm({ userId, initialProfile }: Props) {
         website: form.website || null,
         updated_at: new Date().toISOString(),
       })
-      if (error) throw error
+      
+      if (error) {
+        console.error("Supabase error:", error)
+        throw error
+      }
+      
+      console.log("Profile saved successfully!")
       setMessage("Saved!")
     } catch (err: any) {
+      console.error("Save error:", err)
       setMessage(err.message || "Failed to save profile")
     } finally {
       setSaving(false)

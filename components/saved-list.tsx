@@ -25,26 +25,38 @@ export default function SavedList({ initialItems }: { initialItems: Item[] }) {
     if (!cid.trim()) return
     setSaving(true)
     try {
+      console.log("Attempting to add saved item:", { cid: cid.trim(), title: title.trim() })
+      
       const { data: userRes, error: userErr } = await supabase.auth.getUser()
-      if (userErr) throw userErr
+      if (userErr) {
+        console.error("Auth error:", userErr)
+        throw userErr
+      }
       if (!userRes?.user) {
         alert("Not signed in")
         return
       }
       const userId = userRes.user.id
+      console.log("User ID:", userId)
 
       const { data, error } = await supabase
         .from("saved_items")
         .insert({ cid: cid.trim(), title: title.trim() || null, user_id: userId })
         .select("*")
         .single()
-      if (error) throw error
+        
+      if (error) {
+        console.error("Supabase insert error:", error)
+        throw error
+      }
+      
+      console.log("Item saved successfully:", data)
       setItems((prev) => [data as Item, ...prev])
       setCid("")
       setTitle("")
     } catch (err) {
-      console.log("[v0] addItem error:", (err as any)?.message)
-      alert("Failed to save item")
+      console.error("addItem error:", (err as any)?.message)
+      alert("Failed to save item: " + (err as any)?.message)
     } finally {
       setSaving(false)
     }
