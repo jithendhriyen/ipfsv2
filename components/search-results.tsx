@@ -171,9 +171,10 @@ const SearchResults = ({ darkMode }) => {
 
   const navigateUp = () => {
     if (pathHistory.length > 0) {
-      const previousPath = pathHistory.pop()
+      const newPathHistory = [...pathHistory]
+      const previousPath = newPathHistory.pop()
       setCurrentPath(previousPath)
-      setPathHistory([...pathHistory])
+      setPathHistory(newPathHistory)
 
       const fullCid = previousPath ? `${query}/${previousPath}` : query
       router.push(`/search?q=${encodeURIComponent(fullCid)}`)
