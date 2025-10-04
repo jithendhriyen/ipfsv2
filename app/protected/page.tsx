@@ -1,10 +1,7 @@
 import { redirect } from "next/navigation"
-import Link from "next/link"
-
 import { createClient } from "@/lib/supabase/server"
 import NexusBrowser from "@/components/nexus-browser"
-import { SignOutButton } from "@/components/sign-out-button"
-import { ThemeToggle } from "@/components/theme-toggle"
+import { Navigation } from "@/components/navigation"
 
 export default async function ProtectedPage() {
   const supabase = await createClient()
@@ -16,23 +13,7 @@ export default async function ProtectedPage() {
 
   return (
     <div className="flex-1 w-full flex flex-col">
-      <header className="border-b bg-background">
-        <nav className="mx-auto flex max-w-5xl items-center justify-between p-4">
-          <h1 className="text-lg font-semibold text-pretty">App</h1>
-          <div className="flex items-center gap-3">
-            <Link className="text-sm underline underline-offset-4" href="/profile">
-              Profile
-            </Link>
-            <Link className="text-sm underline underline-offset-4" href="/saved">
-              My Data
-            </Link>
-            <ThemeToggle />
-            <SignOutButton />
-          </div>
-        </nav>
-      </header>
-
-      {/* existing code */}
+      <Navigation />
       <NexusBrowser darkMode />
     </div>
   )
