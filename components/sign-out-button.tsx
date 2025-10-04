@@ -1,5 +1,6 @@
 "use client"
 import { getBrowserSupabase } from "@/lib/supabase/client"
+import { Button } from "@/components/ui/button"
 
 export function SignOutButton() {
   async function onSignOut() {
@@ -8,8 +9,8 @@ export function SignOutButton() {
     window.location.assign("/auth/login")
   }
   return (
-    <button onClick={onSignOut} className="text-sm underline">
+    <Button variant="outline" size="sm" onClick={onSignOut}>
       Sign out
-    </button>
+    </Button>
   )
 }

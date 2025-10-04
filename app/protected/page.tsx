@@ -3,6 +3,8 @@ import Link from "next/link"
 
 import { createClient } from "@/lib/supabase/server"
 import NexusBrowser from "@/components/nexus-browser"
+import { SignOutButton } from "@/components/sign-out-button"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 export default async function ProtectedPage() {
   const supabase = await createClient()
@@ -24,6 +26,8 @@ export default async function ProtectedPage() {
             <Link className="text-sm underline underline-offset-4" href="/saved">
               My Data
             </Link>
+            <ThemeToggle />
+            <SignOutButton />
           </div>
         </nav>
       </header>
