@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
 import SavedList from "@/components/saved-list"
+import { SignOutButton } from "@/components/sign-out-button"
 
 export default async function SavedPage() {
   const supabase = await createClient()
@@ -16,9 +17,14 @@ export default async function SavedPage() {
     .order("created_at", { ascending: false })
 
   return (
-    <main className="max-w-2xl mx-auto p-6">
-      <h1 className="text-2xl font-semibold mb-4 text-balance">Your Saved CIDs</h1>
-      <SavedList initialItems={items ?? []} />
-    </main>
+    <div className="relative">
+      <div className="absolute top-4 right-4 z-10">
+        <SignOutButton />
+      </div>
+      <main className="max-w-2xl mx-auto p-6">
+        <h1 className="text-2xl font-semibold mb-4 text-balance">Your Saved CIDs</h1>
+        <SavedList initialItems={items ?? []} />
+      </main>
+    </div>
   )
 }

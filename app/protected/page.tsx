@@ -2,6 +2,7 @@ import { redirect } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
 import NexusBrowser from "@/components/nexus-browser"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { SignOutButton } from "@/components/sign-out-button"
 
 export default async function ProtectedPage() {
   const supabase = await createClient()
@@ -13,8 +14,9 @@ export default async function ProtectedPage() {
 
   return (
     <div className="relative">
-      <div className="absolute top-4 right-4 z-10">
+      <div className="absolute top-4 right-4 z-10 flex gap-2">
         <ThemeToggle />
+        <SignOutButton />
       </div>
       <NexusBrowser />
     </div>
